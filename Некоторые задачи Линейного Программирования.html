@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Некоторые задачи линейного программирования</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .subhead {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #333333;
+        }
+        .task {
+            border: 1px solid #cccccc;
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+        .task h2 {
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+        table {
+            border-collapse: collapse;
+            width: 99%;
+            margin-bottom: 10px;
+            margin-left: 20px;
+            font-size: 14px;
+            border: 1px solid black;
+        }
+        th, td {
+            border: 1px solid #999999;
+            padding: 1px 1px;
+            text-align: center;
+        }
+        th {
+            background-color: #e0e0e0;
+            font-weight: bold;
+        }
+        .constraints {
+            font-size: 14px;
+            margin: 8px 0;
+            font-family: monospace;
+            background-color: #eeeeee;
+            padding: 6px;
+        }
+        .objective {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 8px 0;
+            font-family: monospace;
+            background-color: #ddffdd;
+            padding: 6px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            border-top: 1px solid #cccccc;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1 align="center">Некоторые задачи линейного программирования</h1>
+<p class = "task"><b>Задача 3.1.</b> Небольшая строительная компания специализируется на строительстве и продаже домов на одну семью. Компания предлагает два основных типа домов: модель А и модель В. Дома модели А требуют 4000 часов рабочего времени, 2 тонны камня и 2000 кв.футов пиломатериалов. Дома модели В – 10000 часов рабочего времени, 3 тонны камня и 2000 кв.футов пиломатериалов. Из-за больших сроков поставки материалов и дефицита квалифицированной и полуквалифицированной рабочей силы в данной местности, компании придется ограничиться уже имеющимися ресурсами в течение наступающего строительного сезона: это около 400000 часов рабочего времени, 150 тонн камня и 200000 кв.футов пиломатериалов. Сколько моделей А и В должна произвести компания, если прибыль от модели А 1000 долл. за единицу, а модели В – 2000 долл. за единицу? Предполагается, что компания может продать все построенные дома.</p>
+<p class = "task"><b>Задача 3.2.</b> Производитель бытовых электроприборов производит две модели микроволновых печей: модель H и модель W. Изготовление каждой модели включает в себя процесс изготовления и сборки деталей каждая единица модели Н требует четырех часов изготовления и сборки деталей, модель W – два и шесть часов соответственно. В неделю компания располагает ресурсом рабочего времени в размере 600 часов на изготовление и 480 часов на сборку. Каждое изделие модели Н приносит 40 долл. прибыли, а модели W – 30 долл. прибыли. В какой пропорции производство моделей H и W будет обеспечивать максимальную прибыль?</p>
+<p class = "task"><b>Задача 3.3.</b> Фирма производит заготовки из литого железа. Изготовление требует трех основных операций: отливка, шлифовка и сверление. Доступное время в неделю для отливки – 36000 минут; для шлифовки – 2250 минут; и для сверления – 3600 минут. Заготовка Х требует 80 минут для отливки, 2,5 минуты для шлифовки и 9 минут для сверления на одно изделие. Заготовка Y требует 60 минут для отливки, 4,5 минуты для шлифовки и 4 минуты для сверления на одно изделие. Каждая заготовка Х приносит 4 долл. прибыли, заготовка Y – 2 долл. Какая комбинация изделий X и Y будет максимизировать еженедельную прибыль?</p>
+<p class = "task"><b>Задача 3.4.</b> Супружеская чета дополняет свой доход изготовлением фруктовых пирогов, которые они продают через небольшую бакалейную лавку. В сентябре они пекут пироги с виноградом и яблоками. Пироги с яблоками продаются бакалейщику по 1,50 долл., а пироги с виноградом – за 1,20 долл. Все приготовленные пироги продаются благодаря их высокому качеству. Рассмотрим только два основных вида ингредиентов для их изготовления: муку и сахар, которые закупаются один раз в месяц. На сентябрь уже заготовлено <st1:metricconverter productid="120 кг" w:st="on">120 кг</st1:metricconverter> сахара и <st1:metricconverter productid="210 кг" w:st="on">210 кг</st1:metricconverter> муки. Каждый яблочный пирог требует <st1:metricconverter productid="150 г" w:st="on">150 г</st1:metricconverter> сахара и <st1:metricconverter productid="300 г" w:st="on">300 г</st1:metricconverter> муки, а каждый виноградный пирог – <st1:metricconverter productid="200 г" w:st="on">200 г</st1:metricconverter> сахара и <st1:metricconverter productid="300 г" w:st="on">300 г</st1:metricconverter> муки. Определить количество виноградных и яблочных пирогов, которое максимизирует прибыль, если эта пара может изготовить яблочный пирог за шесть минут, а виноградный – за три минуты. При этом они планируют работать в сентябре не более 60 часов. Определить количество сахара, муки и времени, которое останется неиспользованным.</p>
+<p class = "task">Задача 3.5. В связи с закрытием неприбыльной производственной линии на предприятии образовался избыток производственных мощностей. Менеджер рассматривает возможность использования свободной производственной линии для производства одного или более из трёх видов продуктов Х1, Х2 или Х3. В таблице 3.1 приведены затраты производственного времени на единицу каждого из этих продуктов.</p>
+<div align="center">
+<p align="right">Таблица 3.1</p>
+<table style="width: 652px;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td width="170" rowspan="2">
+<p align="center">Вид обработки</p>
+</td>
+<td width="482" valign="top" colspan="3">
+<p align="center">Затраты времени на единицу &nbsp; продукта (час).</p>
+</td>
+</tr>
+<tr>
+<td width="161" valign="top">
+<p align="center">Х1</p>
+</td>
+<td width="161" valign="top">
+<p align="center">Х2</p>
+</td>
+<td width="161" valign="top">
+<p align="center">Х3</p>
+</td>
+</tr>
+<tr>
+<td width="170" valign="top">
+<p>Фрезерование</p>
+</td>
+<td width="161" valign="top">
+<p align="center">8</p>
+</td>
+<td width="161" valign="top">
+<p align="center">2</p>
+</td>
+<td width="161" valign="top">
+<p align="center">3</p>
+</td>
+</tr>
+<tr>
+<td width="170" valign="top">
+<p>Токарная</p>
+</td>
+<td width="161" valign="top">
+<p align="center">4</p>
+</td>
+<td width="161" valign="top">
+<p align="center">3</p>
+</td>
+<td width="161" valign="top">
+<p align="center">0</p>
+</td>
+</tr>
+<tr>
+<td width="170" valign="top">
+<p>Шлифовка</p>
+</td>
+<td width="161" valign="top">
+<p align="center">2</p>
+</td>
+<td width="161" valign="top">
+<p align="center">0</p>
+</td>
+<td width="161" valign="top">
+<p align="center">1</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class = "constraints">
+<p>Доступные ресурсы времени обработки в неделю: фрезерование- 800 ч., токарная- 400 ч., шлифование- 320 ч.</p>
+<p>Коммерсанты оценивают, что они могут реализовать весь объём продукции видов Х1 и Х2, который может быть произведён, и максимум 80 единиц продукции вида Х3. Ожидаемая прибыль по видам продуктов на единицу продукции (удельная прибыль): Х1- 10 долл., X2- 6 долл., X3- 8 долл..</p>
+<p>Определить оптимальное соотношение между видами производимой продукции, обеспечивающее максимальную прибыль (в долларах).</p>
+</div>
+<p class = "task"><b>Задача 3.6.</b> Компания производит две марки телевизоров Astro и Cosmo. Работают два конвейера, каждый из которых выпускает телевизоры одной марки, и два цеха, занятых производством деталей для телевизоров обеих марок. Производственная мощность конвейера, выпускающего Astro, составляет 70 телевизоров в день, а конвейера Cosmo – 50 телевизоров в день. Цех А производит телевизионные трубки. На производство трубки для телевизора Astro требуется 1 ч рабочего времени, а на производство трубки для Cosmo – 2 ч. На данном этапе в цеху А производству трубок для телевизоров обеих марок может быть уделено не более 120 ч рабочего времени в день. В цеху Б изготавливаются корпуса для телевизоров. Причем на производство одного корпуса для Astro, как и для Cosmo, требуется 1 час рабочего времени. Цех Б может посвятить изготовлению корпусов не более 90 ч рабочего времени в день. Удельная валовая прибыль от реализации Astro и Cosmo составляет 20 долл. и 10 долл. соответственно.</p>
+<div class = "constraints">
+<p>При условии, что компания может продать все произведенные телевизоры, каким должен быть дневной план производства (цель – максимизация удельной валовой прибыли)?</p></div>
+<p class = "task"><b>Задача 3.7.</b> Предприятие электронной промышленности выпускает пять моделей радиоприёмников, причем модели 1-3 производятся на технологической линии А, а модели 4-5 на технологической линии В. Суточный объём производства линии А- 70 изделий, линии В- 95 изделий. Радиоприёмники всех моделей используют однотипные элементы электронных схем в количествах, определяемых таблицей 3.2.</p>
+<p align="right">Таблица 3.2</p>
+<div align="center">
+<table style="width: 652px;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td width="180" valign="top">
+<p>Модель приёмника</p>
+</td>
+<td width="85">
+<p align="center">1</p>
+</td>
+<td width="85">
+<p align="center">2</p>
+</td>
+<td width="85">
+<p align="center">3</p>
+</td>
+<td width="104">
+<p align="center">4</p>
+</td>
+<td width="113">
+<p align="center">5</p>
+</td>
+</tr>
+<tr>
+<td width="180" valign="top">
+<p>Кол-во элементов</p>
+</td>
+<td width="85">
+<p align="center">10</p>
+</td>
+<td width="85">
+<p align="center">8</p>
+</td>
+<td width="85">
+<p align="center">6</p>
+</td>
+<td width="104">
+<p align="center">11</p>
+</td>
+<td width="113">
+<p align="center">15</p>
+</td>
+</tr>
+<tr>
+<td width="180" valign="top">
+<p>Прибыль от реализации, долл.</p>
+</td>
+<td width="85">
+<p align="center">30</p>
+</td>
+<td width="85">
+<p align="center">20</p>
+</td>
+<td width="85">
+<p align="center">10</p>
+</td>
+<td width="104">
+<p align="center">22</p>
+</td>
+<td width="113">
+<p align="center">40</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class = "constraints">
+<p>Максимальный суточный запас используемых элементов равен 1800 единицам.</p>
+<p>Определите оптимальные суточные объёмы производства радиоприёмников различных видов, доставляющие максимальную прибыль;</p>
+<p>Предприятие планирует в дополнение к двум существующим запустить третью технологическую линию С по сборке радиоприёмников с производительностью 100 изделий в сутки. Какие модели радиоприёмников целесообразно производить на этой линии, в каких объёмах и какой минимальный суточный запас элементов необходим для полной загруженности всех трёх линий ?</p>
+</div>
+<p class = "task"><b>Задача 3.8.</b> Завод, находящийся в некоторой развивающейся стране, может производить пять различных продуктов в произвольном соотношении. В выпуске каждого продукта принимают участие три станка, как показано в таблице 3.3.</p>
+<p align="right">Таблица 3.3</p>
+<div align="center">
+<table style="width: 648px;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td width="108" valign="top" rowspan="2">
+<p align="center">Продукт</p>
+<p align="center">&nbsp;</p>
+</td>
+<td width="540" valign="top" colspan="3">
+<p align="center">Время работы станка, мин./фунт</p>
+</td>
+</tr>
+<tr>
+<td width="174" valign="top">
+<p align="center">I</p>
+</td>
+<td width="189" valign="top">
+<p align="center">II</p>
+</td>
+<td width="177" valign="top">
+<p align="center">III</p>
+</td>
+</tr>
+<tr>
+<td width="108" valign="top">
+<p align="center">А</p>
+<p align="center">B</p>
+<p align="center">C</p>
+<p align="center">D</p>
+<p align="center">E</p>
+</td>
+<td width="174" valign="top">
+<p align="center">12</p>
+<p align="center">7</p>
+<p align="center">8</p>
+<p align="center">10</p>
+<p align="center">7</p>
+</td>
+<td width="189" valign="top">
+<p align="center">8</p>
+<p align="center">9</p>
+<p align="center">4</p>
+<p align="center">0</p>
+<p align="center">11</p>
+</td>
+<td width="177" valign="top">
+<p align="center">5</p>
+<p align="center">10</p>
+<p align="center">7</p>
+<p align="center">3</p>
+<p align="center">2</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class = "constraints">
+<p>Ресурс рабочего времени каждого станка составляет 128 ч в неделю. Все продукты конкурентоспособны и все их произведено количество может быть продано по цене 5 долл., 4 долл., 5 долл., 4 долл. и 4 долл. за фунт продукта A, B, C, D и E соответственно. Переменные затраты на зарплаты составляют 4 долл. в час для станков I и II, 3 долл. в час для станка III. Стоимость материалов, затраченных на выпуск каждого фунта продуктов А и С, составляет 2 долл., а продуктов B, D и E – 1 долл. Руководство хочет максимизировать прибыль компании.</p>
+<p>Сколько часов отработает каждый станок, и в каких единицах измеряются теневые цены для ограничений, задающих ресурс рабочего времени для станков ?</p>
+<p>На сколько может увеличиться цена продажи продукта А, прежде чем изменится оптимальный производственный план ?</p>
+</div>
+<p class = "task"><b>Задача 3.9.</b> Цех, изготавливающий два вида изделий, располагает наличием металла в количестве <st1:metricconverter productid="12000 кг" w:st="on">12000 кг</st1:metricconverter> и ресурсов машинного времени 100 смен. Какое количество изделий каждого вида необходимо изготовить, чтобы обеспечить максимальный выпуск товарной продукции с учетом экономических показателей, представленных в таблице 3.4?</p>
+<p align="right">Таблица 3.4</p>
+<div align="center">
+<table style="width: 643px;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td width="255" rowspan="2">
+<h3>Показатели</h3>
+</td>
+<td width="387" valign="top" colspan="2">
+<p align="center">Изделия</p>
+</td>
+</tr>
+<tr>
+<td width="198" valign="top">
+<h5>I</h5>
+</td>
+<td width="189" valign="top">
+<p align="center">II</p>
+</td>
+</tr>
+<tr>
+<td width="255" valign="top">
+<p>Производительность &nbsp; оборудования в смену,тыс.шт</p>
+</td>
+<td width="198" valign="top">
+<h5>10</h5>
+</td>
+<td width="189" valign="top">
+<p align="center">12</p>
+</td>
+</tr>
+<tr>
+<td width="255" valign="top">
+<p>Расход металла кг/тыс.шт</p>
+</td>
+<td width="198" valign="top">
+<p align="center">20</p>
+</td>
+<td width="189" valign="top">
+<p align="center">6</p>
+</td>
+</tr>
+<tr>
+<td width="255" valign="top">
+<p>Макс.потребность &nbsp; тыс.шт</p>
+</td>
+<td width="198" valign="top">
+<p align="center">500</p>
+</td>
+<td width="189" valign="top">
+<p align="center">1000</p>
+</td>
+</tr>
+<tr>
+<td width="255" valign="top">
+<p>Цена &nbsp; руб.за тыс.шт</p>
+</td>
+<td width="198" valign="top">
+<p align="center">2000</p>
+</td>
+<td width="189" valign="top">
+<p align="center">1500</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class = "constraints">
+<p>Исследовать устойчивость оптимального плана к изменениям цен на выпускаемую продукцию.</p>
+</div>
+<p class = "task"><b>Задача 3.10.</b> На участке цеха имеется две группы оборудования, на которых изготавливаются изделия двух наименований (таблица 3.5).</p>
+
+<p align="right">Таблица 3.5</p>
+<div align="center">
+<table style="width: 650px;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td width="102" valign="top" rowspan="2">
+<h5>Операция</h5>
+</td>
+<td width="132" valign="top" rowspan="2">
+<p align="center">Группа оборудования</p>
+</td>
+<td width="269" valign="top" colspan="2">
+<p align="center">Производительность &nbsp; оборудования (шт/час)</p>
+</td>
+<td width="146" valign="top" rowspan="2">
+<p align="center">Фонд времени оборудования &nbsp; станко-часы</p>
+</td>
+</tr>
+<tr>
+<td width="123" valign="top">
+<h5>А</h5>
+</td>
+<td width="146" valign="top">
+<h5>Б</h5>
+</td>
+</tr>
+<tr>
+<td width="102" valign="top">
+<p align="center">1</p>
+</td>
+<td width="132" valign="top">
+<p align="center">Токарная</p>
+</td>
+<td width="123" valign="top">
+<p align="center">2</p>
+</td>
+<td width="146" valign="top">
+<p align="center">6</p>
+</td>
+<td width="146" valign="top">
+<p align="center">280</p>
+</td>
+</tr>
+<tr>
+<td width="102" valign="top">
+<p align="center">2</p>
+</td>
+<td width="132" valign="top">
+<p align="center">Фрезерная</p>
+</td>
+<td width="123" valign="top">
+<p align="center">3</p>
+</td>
+<td width="146" valign="top">
+<p align="center">5</p>
+</td>
+<td width="146" valign="top">
+<p align="center">260</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="constraints">
+<p>Определить количество изделий, при котором возможно максимальное использование времени работы оборудования.</p></div>
+<p class = "task"><b>Задача 3.11.</b> Прокат А может быть реализован в количестве 250 тонн с прибылью 350 руб. на 1 т., прокат Б- в количестве 1250 т., с прибылью 250 руб/т, и прокат В- в кол-ве 1500 тонн с прибылью 400 руб/т.</p>
+<div class="constraints"><p>Для выполнения плана завод располагает тремя видами оборудования: обжигальными печами (I), травильным агрегатом(II), прокатным станом(III). Фонд времени и нормы расхода времени на 1 т проката приведены в таблице 3.6.</p></div>
+
+<p align="right">Таблица 3.6</p>
+<div align="center">
+<table align="center" style="width: 655px;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td width="135" valign="top" rowspan="2">
+<p align="center">Вид оборудования</p>
+</td>
+<td width="140" valign="top" rowspan="2">
+<p align="center">Месячный фонд времени (час).</p>
+</td>
+<td width="380" valign="top" colspan="3">
+<p align="center">Расход времени по видам проката (час/т)</p>
+</td>
+</tr>
+<tr>
+<td width="135" valign="top">
+<p align="center">А</p>
+</td>
+<td width="128" valign="top">
+<p align="center">Б</p>
+</td>
+<td width="118" valign="top">
+<p align="center">В</p>
+</td>
+</tr>
+<tr>
+<td width="135" valign="top">
+<p align="center">I</p>
+</td>
+<td width="140" valign="top">
+<p align="center">2766</p>
+</td>
+<td width="135" valign="top">
+<p align="center">3.5</p>
+</td>
+<td width="128" valign="top">
+<p align="center">2.8</p>
+</td>
+<td width="118" valign="top">
+<p align="center">-</p>
+</td>
+</tr>
+<tr>
+<td width="135" valign="top">
+<p align="center">II</p>
+</td>
+<td width="140" valign="top">
+<p align="center">624</p>
+</td>
+<td width="135" valign="top">
+<p align="center">0.083</p>
+</td>
+<td width="128" valign="top">
+<p align="center">0.083</p>
+</td>
+<td width="118" valign="top">
+<p align="center">0.104</p>
+</td>
+</tr>
+<tr>
+<td width="135" valign="top">
+<p align="center">III</p>
+</td>
+<td width="140" valign="top">
+<p align="center">416</p>
+</td>
+<td width="135" valign="top">
+<p align="center">0.067</p>
+</td>
+<td width="128" valign="top">
+<p align="center">0.1</p>
+</td>
+<td width="118" valign="top">
+<p align="center">0.083</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="constraints"><p>Подобрать такую программу изготовления трёх видов проката, которая обеспечивала бы максимальную общую прибыль.</p></div>
+<p class = "task"><b>Задача 3.12.</b> На металлургическом заводе последовательно в трёх цехах изготавливается сталь двух марок. Время обработки одной тонны каждой марки стали и общее время возможной работы цехов в соответствующем периоде представлены в таблице 3.7.</p>
+<p align="right">Таблица 3.7</p>
+<table style="width: 633px;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td width="166" valign="top" rowspan="2">
+<p align="center">Цехи</p>
+</td>
+<td width="353" valign="top" colspan="2">
+<p align="center">Трудоёмкость обработки &nbsp; одной тонны стали (час).</p>
+</td>
+<td width="113" valign="top" rowspan="2">
+<p align="center">Время работы цеха в сутки &nbsp; (час.)</p>
+</td>
+</tr>
+<tr>
+<td width="183" valign="top">
+<p align="center">1 марка</p>
+</td>
+<td width="170" valign="top">
+<p align="center">2 марка</p>
+</td>
+</tr>
+<tr>
+<td width="166" valign="top">
+<p align="center">Травильный</p>
+</td>
+<td width="183">
+<p align="center">2</p>
+</td>
+<td width="170">
+<p align="center">2</p>
+</td>
+<td width="113">
+<p align="center">12</p>
+</td>
+</tr>
+<tr>
+<td width="166" valign="top">
+<p>Термический</p>
+</td>
+<td width="183">
+<p align="center">1</p>
+</td>
+<td width="170">
+<p align="center">2</p>
+</td>
+<td width="113">
+<p align="center">16</p>
+</td>
+</tr>
+<tr>
+<td width="166" valign="top">
+<p>Прокатный</p>
+</td>
+<td width="183">
+<p align="center">4</p>
+</td>
+<td width="170">
+<p align="center">4</p>
+</td>
+<td width="113">
+<p align="center">24</p>
+</td>
+</tr>
+<tr>
+<td width="166" valign="top">
+<p>Цена &nbsp; одной тонны стали, тыс.руб.</p>
+</td>
+<td width="183">
+<p align="center">600</p>
+</td>
+<td width="170">
+<p align="center">900</p>
+</td>
+<td width="113">
+<p align="center">&nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="constraints">
+<ol>
+<li>определить максимальный объём выпуска стали различных марок в стоимостном выражении, если суточная программа выпуска первой марки стали составляет 3 тонны, второй- 1.5 тонны;</li>
+<li>проанализировать использование ресурсов по цехам, определить оценку их дефицитности;</li>
+<li>на сколько увеличится выпуск стали в стоимостном выражении, если время работы травильного цеха увеличить на 4 часа?</li>
+</ol>
+</div>
+<p class = "task"><b>Задача 3.13.</b> Дана следующая информация (таблица 3.8):</p>
+<p align="right">Таблица 3.8</p>
+<table align="center" style="width: 631px;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td width="149" valign="top" rowspan="2">
+<p>Ресурсы</p>
+</td>
+<td width="104" valign="top" rowspan="2">
+<p align="center">Единицы &nbsp; измерения</p>
+</td>
+<td width="271" valign="top" colspan="2">
+<p align="center">Нормы &nbsp; затрат ресурсов на единицу продукции</p>
+</td>
+<td width="107" valign="top" rowspan="2">
+<p align="center">Наличие ресурсов</p>
+</td>
+</tr>
+<tr>
+<td width="132" valign="top">
+<p align="center">А</p>
+</td>
+<td width="139" valign="top">
+<p align="center">Б</p>
+</td>
+</tr>
+<tr>
+<td width="149" valign="top">
+<p>Оборудование</p>
+</td>
+<td width="104" valign="top">
+<p>Производительность (шт/час)</p>
+</td>
+<td width="132" valign="top">
+<p align="center">3</p>
+</td>
+<td width="139" valign="top">
+<p align="center">7</p>
+</td>
+<td width="107" valign="top">
+<p align="center">210 &nbsp; (час)</p>
+</td>
+</tr>
+<tr>
+<td width="149" valign="top">
+<p>Трудовые ресурсы</p>
+</td>
+<td width="104" valign="top">
+<p align="center">Чел.-часы</p>
+</td>
+<td width="132" valign="top">
+<p align="center">4</p>
+</td>
+<td width="139" valign="top">
+<p align="center">2</p>
+</td>
+<td width="107" valign="top">
+<p align="center">100</p>
+</td>
+</tr>
+<tr>
+<td width="149" valign="top">
+<p>Себестоимость ед.продукции</p>
+</td>
+<td width="104" valign="top">
+<p align="center">Тыс.руб.</p>
+</td>
+<td width="132">
+<p align="center">2,13</p>
+</td>
+<td width="139">
+<p align="center">10</p>
+</td>
+<td width="107" valign="top">
+<p align="center">&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td width="149" valign="top">
+<p>Цена ед.продукции</p>
+</td>
+<td width="104" valign="top">
+<p align="center">Тыс.руб.</p>
+</td>
+<td width="132" valign="top">
+<p align="center">3</p>
+</td>
+<td width="139" valign="top">
+<p align="center">12</p>
+</td>
+<td width="107" valign="top">
+<p align="center">&nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="constraints"><p>Составить план производства продукции, при котором суммарная себестоимость выпуска минимальна и обеспечивается выполнение задания по объёму реализации продукции в сумме 180 тыс.руб. Проанализировать использование ресурсов и устойчивость оптимального решения на изменение их объёма.</p></div>
+
+<p class = "task"><b>Задача 3.14.</b> Управляющий персоналом университета должен составить расписание охраны территории университета, удовлетворяющее требованиям, представленным в таблице 3.9.</p>
+
+<p align="right">Таблица 3.9</p>
+<table style="width: 641px;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td width="264" valign="top">
+<p align="center">Время</p>
+</td>
+<td width="377" valign="top">
+<p align="center">Минимальное число офицеров охраны</p>
+</td>
+</tr>
+<tr>
+<td width="264" valign="top">
+<p align="center">0.00-4.00</p>
+<p align="center">4.00-8.00</p>
+<p align="center">8.00-12.00</p>
+<p align="center">12.00-16.00</p>
+<p align="center">16.00-20.00</p>
+<p align="center">20.00-24.00</p>
+</td>
+<td width="377" valign="top">
+<p align="center">5</p>
+<p align="center">7</p>
+<p align="center">15</p>
+<p align="center">7</p>
+<p align="center">12</p>
+<p align="center">9</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="constraints"><p>Офицеры дежурят посменно, продолжительность смены 8ч. На каждый день установлено 6 смен. Время начала и окончания каждой смены показано в таблице 3.10.</p></div>
+<p align="right">Таблица 3.10</p>
+<table border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td width="120" valign="top">
+<p align="center">Смена</p>
+</td>
+<td width="264" valign="top">
+<p align="center">Время начала</p>
+<p align="center">&nbsp;</p>
+</td>
+<td width="257" valign="top">
+<p align="center">Время окончания</p>
+<p align="center">&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td width="120" valign="top">
+<p align="center">1</p>
+<p align="center">2</p>
+<p align="center">3</p>
+<p align="center">4</p>
+<p align="center">5</p>
+<p align="center">6</p>
+</td>
+<td width="264" valign="top">
+<p align="center">0.00</p>
+<p align="center">4.00</p>
+<p align="center">8.00</p>
+<p align="center">12.00</p>
+<p align="center">16.00</p>
+<p align="center">20.00</p>
+</td>
+<td width="257" valign="top">
+<p align="center">8.00</p>
+<p align="center">12.00</p>
+<p align="center">16.00</p>
+<p align="center">20.00</p>
+<p align="center">24.00</p>
+<p align="center">4.00</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="constraints">
+<p>Управляющему необходимо определить, сколько офицеров назначить в каждую смену, чтобы минимизировать их количество и при этом удовлетворить требования к организации охраны.</p></div>
+
+<p class = "task"><b>Задача 3.15.</b> Производитель конфет заключил контракт на аренду небольшого кондитерского отдела в фешенебельном магазине. Для начала ассортимент магазина предполагается намеренно ограничить. Отдел будет предлагать набор ассорти из равных частей орехов, изюма, карамели и шоколадных конфет, а также смесь ассорти-люкс, которая состоит наполовину из орехов и наполовину из шоколадных конфет. Наборы будут продаваться в однофунтовых коробках. При этом в отделе можно будет купить отдельные однофунтовые коробки орехов, изюма, карамели и шоколадных конфет.</p>
+<div class="constraints"><p>Главное преимущество этого кондитерского отдела заключается в том, что все конфеты свежие и производятся прямо на месте. Однако площади под хранение готовой продукции и ингредиентов ограничены. Допустимые значения емкостей под хранение продукции (фунтов в день) приведены ниже:</p>
+<ul>
+<li>орехи – 120;</li>
+<li>изюм – 200;</li>
+<li>карамель – 100;</li>
+<li>шоколадные конфеты – 160.</li></ul></div>
+<div class="constraints"><p>Чтобы создать хороший имидж и привлечь покупателей, отдел планирует ежедневно производить, по меньшей мере, 20 коробок каждого типа изделия. Коробки с конфетами, которые удалось продать, предполагается изымать из оборота&nbsp; в конце дня и передавать близлежащей частной лечебнице в&nbsp; благотворительных целях.</p>
+<p>Прибыль на одну коробку сладостей для различных наименований распределяется следующим образом:</p>
+<ul>
+<li>набор ассорти - 0,80 долл.;</li>
+<li>ассорти-люкс- 0,90 долл.;</li>
+<li>орехи - 0,70 долл.;</li>
+<li>изюм - 0,60 долл.;</li>
+<li>карамель - 0,50 долл.;</li>
+<li>шоколадные конфеты - 0,75 долл.</li>
+</ul><p>Сформулируйте модель линейного программирования. Определите оптимальное количество коробок каждого наименования из предлагаемого ассортимента и максимальную прибыль.</p></div>
+
+<div class = "task"><p><b>Задача 3.16.</b> Кондитерский магазин готовится к периоду школьных каникул. Владелец магазина должен решить, сколько пакетиков особой смеси и сколько пакетиков обычной смеси из орехов и изюма Peanut/Raisin Delite необходимо приготовить к продаже. Особая смесь содержит 2/3 фунта изюма и 1/3 фунта орехов, а стандартная смесь – 1/2 фунта изюма и 1/2&nbsp; фунта орехов на один пакетик. В магазине имеется в наличии <st1:metricconverter productid="90 фунтов" w:st="on">90 фунтов</st1:metricconverter> изюма и <st1:metricconverter productid="60 фунтов" w:st="on">60 фунтов</st1:metricconverter> орехов. В каждом из компонентов содержится следующая пропорция питательных веществ (в долях единиц):</p>
+<ul>
+<li>орехи: белки 0,6; жиры – 0,2; углеводы – 0,1; прочие – 0,1.</li>
+<li>изюм: белки 0,3; жиры – 0,15; углеводы – 0,5; прочие – 0,05.</li></ul>
+<p>Орехи стоят 0,60 долл. за фунт, а изюм - 1,50 долл. за фунт.</p>
+Особая смесь будут приготавливаться по $2,90 за фунт, а стандартная смесь - 2,55 долл. за фунт. Владелец магазина рассчитывает продать не более 110 пакетиков одного типа. Ответить на следующие вопросы:</p>
+<ol>
+<li>если цель состоит в максимизации прибыли, то сколько пакетиков каждого типа следует подготовить?</li>
+<li>в каком количестве должны входить в каждую смесь орехи и изюм, чтобы обеспечить минимальное содержание питательных веществ и минимальную сумму расходов?</li>
+</ol>
+</div>
+<p class = "task"><b>Задача 3.17.</b> Компания располагает двумя заводами и тремя оптовыми магазинами-складами. Первый завод может поставлять не более 100 единиц определенной продукции, а второй – не более 200 единиц. В первом магазине-складе может храниться не более 150 единиц продукции, во втором – 200, а в третьем – 350 единиц. Цена продажи единицы продукции в первом магазине составляет 12 долл., во втором – 14 долл., в третьем – 15 долл.. Суммарные затраты на производство единицы продукции на i-ом заводе и доставку ее в магазин-склад j приведены в таблице 3.11. Компания пытается определить, &nbsp;сколько единиц продукции необходимо отравить с каждого завода каждому магазину чтобы максимизировать прибыль.</p>
+<p align="right">Таблица 3.11</p>
+<table style="width: 641px;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td width="131" valign="top" rowspan="2">
+<p align="center">Завод</p>
+<p align="center">&nbsp;</p>
+</td>
+<td width="510" valign="top" colspan="3">
+<p align="center">Магазин-склад, долл.</p>
+</td>
+</tr>
+<tr>
+<td width="170" valign="top">
+<p align="center">I</p>
+</td>
+<td width="189" valign="top">
+<p align="center">II</p>
+</td>
+<td width="151" valign="top">
+<p align="center">III</p>
+</td>
+</tr>
+<tr>
+<td width="131" valign="top">
+<p>1</p>
+<p>2</p>
+</td>
+<td width="170" valign="top">
+<p align="center">8</p>
+<p align="center">7</p>
+</td>
+<td width="189" valign="top">
+<p align="center">10</p>
+<p align="center">9</p>
+</td>
+<td width="151" valign="top">
+<p align="center">12</p>
+<p align="center">11</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p class = "task"><b>Задача 3.18.</b> На фармацевтическую фабрику требуются три контролера медицинских препаратов. Капсула с препаратом помещается на специальный стол, где она просвечивается, и контролер визуально проверяет ее, выявляя поврежденные, недостаточно заполненные или плохо закрытые капсулы. Уже отобрано три кандидата на должность. Все кандидаты различаются о своим внешним данным, а также по скорости и точности выполнения работы, поэтому менеджер по персоналу установил им разные ставки почасовой оплаты. Данные о рабочих характеристиках и росте кандидатов приводятся в таблице 3.12.</p>
+<p align="right">Таблица 3.12</p>
+<table border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td width="132" valign="top">
+<p align="center">Контролер</p>
+<p align="center">&nbsp;</p>
+</td>
+<td width="132" valign="top">
+<p align="center">Скорость, &nbsp; шт./ч</p>
+</td>
+<td width="113" valign="top">
+<p align="center">Точность, &nbsp; %</p>
+</td>
+<td width="142" valign="top">
+<p align="center">Почасовая ставка, долл.</p>
+<p align="center">&nbsp;</p>
+</td>
+<td width="123" valign="top">
+<p align="center">Рост, см</p>
+<p align="center">&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td width="132" valign="top">
+<p>Кандидат 1</p>
+<p>Кандидат 2</p>
+<p>Кандидат 3</p>
+</td>
+<td width="132" valign="top">
+<p align="center">300</p>
+<p align="center">200</p>
+<p align="center">350</p>
+</td>
+<td width="113" valign="top">
+<p align="center">99</p>
+<p align="center">98</p>
+<p align="center">96</p>
+</td>
+<td width="142" valign="top">
+<p align="center">11,80</p>
+<p align="center">10,40</p>
+<p align="center">11,00</p>
+</td>
+<td width="123" valign="top">
+<p align="center">178</p>
+<p align="center">132</p>
+<p align="center">164</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="constraints">
+<p>Менеджеру по персоналу необходимо, чтобы за 8-часовой рабочий день было проверено не менее 2000 капсул, причем ошибки проверки могут составлять не более 3% от общего количества. Кроме того из-за нарастающего утомления один контролер не может работать более 4-х часов в день.</p>
+<p>Построить экономико-математическую модель задачи по критерию минимизации затрат на 8-часовую проверку препаратов. Предполагается, что процесс проверки длится все 8 часов; одновременно может работать только один контролер, контролер работает не более 4-х часов в день.</p></div>
+
+<p class = "task"><b>Задача 3.19.</b> Кондитерская фабрика должна закрыться на ремонт, поэтому надо реализовать оставшиеся запасы сырья, получив максимальную прибыль. Запасы и расход сырья для производства единицы продукции каждого вида, а также получаемая при этом прибыль представлены в таблице 3.13.</p>
+<p align="right">Таблица 3.13</p>
+<table border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td width="122" rowspan="2">
+<p align="center"><b>Ресурсы</b></p>
+</td>
+<td width="394" colspan="5">
+<p align="center"><b>Кондитерские изделия</b></p>
+</td>
+<td width="139" rowspan="2">
+<p align="center"><b>Ограничения</b></p>
+</td>
+</tr>
+<tr>
+<td width="89">
+<p align="center"><b>Ореховка</b></p>
+</td>
+<td width="67">
+<p align="center"><b>Полет</b></p>
+</td>
+<td width="86">
+<p align="center"><b>Батончик</b></p>
+</td>
+<td width="68">
+<p align="center"><b>Белка</b></p>
+</td>
+<td width="84">
+<p align="center"><b>Ромашка</b></p>
+</td>
+</tr>
+<tr>
+<td width="122" valign="top">
+<p><b>Темный шоколад</b></p>
+</td>
+<td width="89" valign="top">
+<p><b>0.8</b></p>
+</td>
+<td width="67" valign="top">
+<p><b>0.5</b></p>
+</td>
+<td width="86" valign="top">
+<p><b>1</b></p>
+</td>
+<td width="68" valign="top">
+<p><b>2</b></p>
+</td>
+<td width="84" valign="top">
+<p><b>1.1</b></p>
+</td>
+<td width="139" valign="top">
+<p><b>1411</b></p>
+</td>
+</tr>
+<tr>
+<td width="122" valign="top">
+<p><b>Молочный шоколад</b></p>
+</td>
+<td width="89" valign="top">
+<p><b>0.2</b></p>
+</td>
+<td width="67" valign="top">
+<p><b>0.1</b></p>
+</td>
+<td width="86" valign="top">
+<p><b>0.1</b></p>
+</td>
+<td width="68" valign="top">
+<p><b>0.1</b></p>
+</td>
+<td width="84" valign="top">
+<p><b>0.2</b></p>
+</td>
+<td width="139" valign="top">
+<p><b>149</b></p>
+</td>
+</tr>
+<tr>
+<td width="122" valign="top">
+<p><b>Сахар</b></p>
+</td>
+<td width="89" valign="top">
+<p><b>0.3</b></p>
+</td>
+<td width="67" valign="top">
+<p><b>0.4</b></p>
+</td>
+<td width="86" valign="top">
+<p><b>0.6</b></p>
+</td>
+<td width="68" valign="top">
+<p><b>1.3</b></p>
+</td>
+<td width="84" valign="top">
+<p><b>0.05</b></p>
+</td>
+<td width="139" valign="top">
+<p><b>815.5</b></p>
+</td>
+</tr>
+<tr>
+<td width="122" valign="top">
+<p><b>Карамель</b></p>
+</td>
+<td width="89" valign="top">
+<p><b>0.2</b></p>
+</td>
+<td width="67" valign="top">
+<p><b>0.3</b></p>
+</td>
+<td width="86" valign="top">
+<p><b>0.3</b></p>
+</td>
+<td width="68" valign="top">
+<p><b>0.7</b></p>
+</td>
+<td width="84" valign="top">
+<p><b>0.5</b></p>
+</td>
+<td width="139" valign="top">
+<p><b>466</b></p>
+</td>
+</tr>
+<tr>
+<td width="122" valign="top">
+<p><b>Орехи</b></p>
+</td>
+<td width="89" valign="top">
+<p><b>0.7</b></p>
+</td>
+<td width="67" valign="top">
+<p><b>0.1</b></p>
+</td>
+<td width="86" valign="top">
+<p><b>0.9</b></p>
+</td>
+<td width="68" valign="top">
+<p><b>1.5</b></p>
+</td>
+<td width="84" valign="top">
+<p><b>0</b></p>
+</td>
+<td width="139" valign="top">
+<p><b>1080</b></p>
+</td>
+</tr>
+<tr>
+<td width="122" valign="top">
+<p><b>Прибыль</b></p>
+</td>
+<td width="89" valign="top">
+<p><b>1</b></p>
+</td>
+<td width="67" valign="top">
+<p><b>0.7</b></p>
+</td>
+<td width="86" valign="top">
+<p><b>1.1</b></p>
+</td>
+<td width="68" valign="top">
+<p><b>2</b></p>
+</td>
+<td width="84" valign="top">
+<p><b>0.6</b></p>
+</td>
+<td width="139" valign="top">
+<p><b>&nbsp;</b></p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<div class="constraints"><p>Составить оптимальный план выпуска продукции, обеспечивающий максимальную прибыль<b>.</b></p></div>
+
+<p class = "task"><b>Задача 3.20.</b> Магазин собирается заказать коллекцию костюмов для весеннего сезона. Решено заказать четыре типа костюмов: из полиэстера, из шерсти, из хлопка и из эластика. Имеющийся у менеджеров магазина опыт позволяет оценить средние затраты рабочего времени продавцов на продажу одного костюма каждого типа, объем затрат на рекламу и площади в расчете на один костюм каждого типа. Все эти данные, а также прибыль от продажи одного костюма каждого типа представлены в таблице 3.14.</p>
+<p align="right">Таблица 3.14</p>
+<p><b>.</b></p>
+<table border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td valign="top">
+<p><b>Тип костюма</b></p>
+</td>
+<td valign="top">
+<p><b>Прибыль(дол.)</b></p>
+</td>
+<td valign="top">
+<p><b>Время (час.)</b></p>
+</td>
+<td valign="top">
+<p><b>Реклама (у.е.)</b></p>
+</td>
+<td valign="top">
+<p><b>Площадь (м<sup>2</sup>)</b></p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><b>Полиэстер</b></p>
+</td>
+<td valign="top">
+<p><b>35</b></p>
+</td>
+<td valign="top">
+<p><b>0.4</b></p>
+</td>
+<td valign="top">
+<p><b>2</b></p>
+</td>
+<td valign="top">
+<p><b>1.00</b></p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><b>Шерсть</b></p>
+</td>
+<td valign="top">
+<p><b>47</b></p>
+</td>
+<td valign="top">
+<p><b>0.5</b></p>
+</td>
+<td valign="top">
+<p><b>4</b></p>
+</td>
+<td valign="top">
+<p><b>1.50</b></p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><b>Хлопок</b></p>
+</td>
+<td valign="top">
+<p><b>30</b></p>
+</td>
+<td valign="top">
+<p><b>0.3</b></p>
+</td>
+<td valign="top">
+<p><b>3</b></p>
+</td>
+<td valign="top">
+<p><b>1.25</b></p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><b>Эластик</b></p>
+</td>
+<td valign="top">
+<p><b>90</b></p>
+</td>
+<td valign="top">
+<p><b>1.0</b></p>
+</td>
+<td valign="top">
+<p><b>9</b></p>
+</td>
+<td valign="top">
+<p><b>3.00</b></p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<div class="constraints"><p>В течении сезона время работы магазина 900 часов, выделенная отделу костюмов; площадь магазина составляет прямоугольник 16000 м<sup>2</sup>. Бюджет, выделенный на рекламу всех костюмов на весенний сезон, составляет 15 000 у.е.</p>
+<p>Сколько костюмов каждого типа надо закупить, чтобы получить максимальную прибыль<b>.</b></p></div>
+
+<p class = "task"><b>Задача 3.21.</b> Городской молочный комбинат выпускает молоко, кефир и сметану. На производство 1 т молока, кефира и сметаны требуется 1.01; 1.01 и 9.45 т молока. При этом затраты рабочего времени при разливе 1 т молока и кефира составляют 0.18 и 0.19 машино/час. На расфасовке 1 т сметаны используются специальные автоматы в течении 3.25 час. Всего для производства цельномолочной продукции завод может использовать 136 т молока. Основное оборудование может быть занято в течение 21.4 час, а автоматы по расфасовке сметаны – в течение 16.25 час.</p>
+<div class="constraints">
+	<p>Прибыль от реализации 1 т молока, кефира и сметаны соответственно равна 30, 22 и 136 руб.</p>
+	<p>Определить объемы выпуска молочной продукции, позволяющие получить наибольшую прибыль.</p>
+</div>
+
+<p class = "task"><b>Задача 3.22.</b> Предприятие выпускает три вида продукции – А, Б, В. Уровень выпуска продукции лимитируется имеющимися в распоряжении предприятия ресурсами сырья, материалов и оборудования двух различных групп. Необходимо определить такой уровень выпуска продукции, чтобы достигнуть максимума общей стоимости.</p>
+<div class="constraints"><p>Числовые данные задачи приведены в таблице.3.15.</p></div>
+<p align="right"><b>Таблица 3.15</b></p>
+<p align="right"><b>&nbsp;</b></p>
+<table border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td rowspan="2">
+<p align="center"><b>Ресурсы</b></p>
+</td>
+<td rowspan="2">
+<p align="center"><b>Располагаемый</b></p>
+<p align="center"><b>объем</b></p>
+</td>
+<td valign="top" colspan="3">
+<p><b>Нормы затрат на </b></p>
+<p><b>единицу продукции &nbsp; вида</b></p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p><b>А</b></p>
+</td>
+<td valign="top">
+<p><b>Б</b></p>
+</td>
+<td valign="top">
+<p><b>В</b></p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Сырье, кг</p>
+</td>
+<td valign="top">
+<p align="center">240</p>
+</td>
+<td valign="top">
+<p align="center">5</p>
+</td>
+<td valign="top">
+<p align="center">7</p>
+</td>
+<td valign="top">
+<p align="center">4</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Материалы, кг</p>
+</td>
+<td valign="top">
+<p align="center">800</p>
+</td>
+<td valign="top">
+<p align="center">10</p>
+</td>
+<td valign="top">
+<p align="center">5</p>
+</td>
+<td valign="top">
+<p align="center">20</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Оборудование I группы, час</p>
+</td>
+<td valign="top">
+<p align="center">100</p>
+</td>
+<td valign="top">
+<p align="center">5</p>
+</td>
+<td valign="top">
+<p align="center">2</p>
+</td>
+<td valign="top">
+<p align="center">1</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Оборудование II группы, час</p>
+</td>
+<td valign="top">
+<p align="center">60</p>
+</td>
+<td valign="top">
+<p align="center">2</p>
+</td>
+<td valign="top">
+<p align="center">1</p>
+</td>
+<td valign="top">
+<p align="center">1</p>
+</td>
+</tr>
+<tr>
+<td valign="top">
+<p>Cтоимость единицы продукции, руб.</p>
+</td>
+<td valign="top">
+<p align="center">-</p>
+</td>
+<td valign="top">
+<p align="center">18</p>
+</td>
+<td valign="top">
+<p align="center">12</p>
+</td>
+<td valign="top">
+<p align="center">8</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class = "task"><b>Задача 3.23.</b> Фирма производит заготовки вида А и В из литого железа. Изготовление состоит из трех основных операций: отливка, шлифовка, сверление. Доступное время в неделю для отливки- 48000 мин., для шлифовки- 6000 мин., для сверления- 9600 мин. Заготовка А требует 100 минут для отливки, 4 мин. для шлифовки и 8 минут для сверления. Заготовка В требует 77 мин. для отливки, 2 мин. для шлифовки и 4 мин. для сверления. Каждая заготовка А приносит $4 прибыли, заготовка В- $2,5 . Какая комбинация<b> </b>производства изделий будет максимизировать прибыль?</p>
+
+<p class = "task"><b>Задача 3.24.</b> Основными ресурсами добычи топлива (торфа и угля) являются: электроэнергия, оборотные средства топливодобывающего предприятия и трудовые ресурсы. Все они строго лимитированы. В рамках выделенных объемов ресурсов план добычи может быть любой. Необходимо определить структуру добычи для достижения максимальной теплотворности полученного топлива. Нормы затрат ресурсов на добычу торфа и угля, лимиты ресурсов и коэффициенты перевода в условное топливо заданы в таблице 3.16.</p>
+<p align="right">Таблица 3.16</p>
+<table style="width: 100%;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td width="20%" rowspan="2">
+<p align="center"><b>Вид ресурсов</b></p>
+</td>
+<td width="20%" rowspan="2">
+<p align="center"><b>Единица измерения</b></p>
+</td>
+<td width="20%" rowspan="2">
+<p align="center"><b>Количество ресурсов</b></p>
+</td>
+<td width="40%" colspan="2">
+<p align="center"><b>Норма затрат ресурсов на добычу 1 т.</b></p>
+</td>
+</tr>
+<tr>
+<td width="20%">
+<p align="center"><b>Торф</b></p>
+</td>
+<td width="20%">
+<p align="center"><b>Уголь</b></p>
+</td>
+</tr>
+<tr>
+<td width="20%">
+<p align="center"><b>Оборотные средства</b></p>
+</td>
+<td width="20%">
+<p align="center"><b>у.е.</b></p>
+</td>
+<td width="20%">
+<p align="center"><b>20000</b></p>
+</td>
+<td width="20%">
+<p align="center"><b>0,05</b></p>
+</td>
+<td width="20%">
+<p align="center"><b>0,5</b></p>
+</td>
+</tr>
+<tr>
+<td width="20%">
+<p align="center"><b>Электроэнергия</b></p>
+</td>
+<td width="20%">
+<p align="center"><b>кВт*ч</b></p>
+</td>
+<td width="20%">
+<p align="center"><b>180000</b></p>
+</td>
+<td width="20%">
+<p align="center"><b>1,1</b></p>
+</td>
+<td width="20%">
+<p align="center"><b>1,0</b></p>
+</td>
+</tr>
+<tr>
+<td width="20%">
+<p align="center"><b>Трудовые ресурсы</b></p>
+</td>
+<td width="20%">
+<p align="center"><b>чел.-ч</b></p>
+</td>
+<td width="20%">
+<p align="center"><b>32000</b></p>
+</td>
+<td width="20%">
+<p align="center"><b>0,225</b></p>
+</td>
+<td width="20%">
+<p align="center"><b>0,25</b></p>
+</td>
+</tr>
+<tr>
+<td width="60%" colspan="3">
+<p align="center"><b>Коэффициенты перевода в тонны условного топлива</b></p>
+</td>
+<td width="20%">
+<p align="center"><b>0,25</b></p>
+</td>
+<td width="20%">
+<p align="center"><b>1,2</b></p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p class = "task"><b>Задача 3.25.</b> Предприятие изготавливает ковры. Данные о стоимости ковров, о нормах расхода и количестве имеющихся ресурсов приведены в нижеприведенной таблице 3.17.<b></b></p>
+
+<p align="right">Таблица 3.17</p>
+
+<table style="width: 628px;" border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td width="113" nowrap="nowrap" valign="bottom">
+
+</td>
+<td width="444" nowrap="nowrap" valign="bottom" colspan="4">
+<p align="center"><b>Наименование ковров</b></p>
+</td>
+<td width="71" nowrap="nowrap" valign="bottom">
+
+</td>
+</tr>
+<tr>
+<td width="113" nowrap="nowrap" valign="bottom">
+
+</td>
+<td width="124" nowrap="nowrap">
+<p align="center"><b>Ковер "А"</b></p>
+</td>
+<td width="131" nowrap="nowrap">
+<p align="center"><b>Ковер "Б"</b></p>
+</td>
+<td width="100" nowrap="nowrap">
+<p align="center"><b>Ковер "В"</b></p>
+</td>
+<td width="89" nowrap="nowrap">
+<p align="center"><b>Ковер "Г"</b></p>
+</td>
+<td width="71" nowrap="nowrap" valign="bottom">
+</td>
+</tr>
+<tr>
+<td width="113" nowrap="nowrap" valign="bottom">
+<p align="center"><b>Ресурсы</b></p>
+</td>
+<td width="444" nowrap="nowrap" valign="bottom" colspan="4">
+<p align="center"><b>Норма расхода ресурсов на один &nbsp; ковер</b></p>
+</td>
+<td width="71" nowrap="nowrap" valign="bottom">
+<p><b>Наличие </b></p>
+</td>
+</tr>
+<tr>
+<td width="113" nowrap="nowrap">
+<p><b>Труд (чел/дн)</b></p>
+</td>
+<td width="124" nowrap="nowrap">
+<p align="center"><b>7</b></p>
+</td>
+<td width="131" nowrap="nowrap">
+<p align="center"><b>2</b></p>
+</td>
+<td width="100" nowrap="nowrap">
+<p align="center"><b>2</b></p>
+</td>
+<td width="89" nowrap="nowrap">
+<p align="center"><b>6</b></p>
+</td>
+<td width="71" nowrap="nowrap">
+<p align="center"><b>80</b></p>
+</td>
+</tr>
+<tr>
+<td width="113" nowrap="nowrap">
+<p><b>Сырье (кг)</b></p>
+</td>
+<td width="124" nowrap="nowrap">
+<p align="center"><b>5</b></p>
+</td>
+<td width="131" nowrap="nowrap">
+<p align="center"><b>8</b></p>
+</td>
+<td width="100" nowrap="nowrap">
+<p align="center"><b>4</b></p>
+</td>
+<td width="89" nowrap="nowrap">
+<p align="center"><b>3</b></p>
+</td>
+<td width="71" nowrap="nowrap">
+<p align="center"><b>480</b></p>
+</td>
+</tr>
+<tr>
+<td width="113">
+<p><b>Оборудование (час)</b></p>
+</td>
+<td width="124" nowrap="nowrap">
+<p align="center"><b>2</b></p>
+</td>
+<td width="131" nowrap="nowrap">
+<p align="center"><b>4</b></p>
+</td>
+<td width="100" nowrap="nowrap">
+<p align="center"><b>1</b></p>
+</td>
+<td width="89" nowrap="nowrap">
+<p align="center"><b>8</b></p>
+</td>
+<td width="71" nowrap="nowrap">
+<p align="center"><b>130</b></p>
+</td>
+</tr>
+<tr>
+<td width="113" nowrap="nowrap">
+
+</td>
+<td width="124" nowrap="nowrap">
+<p align="center"><b>&nbsp;</b></p>
+</td>
+<td width="131" nowrap="nowrap">
+<p align="center"><b>&nbsp;</b></p>
+</td>
+<td width="100" nowrap="nowrap">
+<p align="center"><b>&nbsp;</b></p>
+</td>
+<td width="89" nowrap="nowrap">
+<p align="center"><b>&nbsp;</b></p>
+</td>
+<td width="71" nowrap="nowrap">
+<p align="center">&nbsp;</p>
+</td>
+</tr>
+<tr>
+<td width="113">
+<p><b>Цена (тыс. руб)</b></p>
+</td>
+<td width="124" nowrap="nowrap">
+<p align="center"><b>3</b></p>
+</td>
+<td width="131" nowrap="nowrap">
+<p align="center"><b>4</b></p>
+</td>
+<td width="100" nowrap="nowrap">
+<p align="center"><b>3</b></p>
+</td>
+<td width="89" nowrap="nowrap">
+<p align="center"><b>1</b></p>
+</td>
+<td width="71" nowrap="nowrap">
+<p align="center">&nbsp;</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<div class="constraints"><p>Сколько нужно изготовить ковров каждого вида, чтобы выручка была наибольшей?</p></div>
+<p>.</p>
+</body>
+</html>
