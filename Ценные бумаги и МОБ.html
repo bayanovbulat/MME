@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модели формирования оптимального портфеля ценных бумаг</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .subhead {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #333333;
+        }
+        .task {
+            border: 1px solid #cccccc;
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+        .task h2 {
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+        table {
+            border-collapse: collapse;
+            width: 75%;
+            margin-bottom: 10px;
+            margin-left: 20px;
+            font-size: 14px;
+            border: 1px solid black;
+        }
+        th, td {
+            border: 1px solid #999999;
+            padding: 1px 1px;
+            text-align: center;
+        }
+        th {
+            background-color: #e0e0e0;
+            font-weight: bold;
+        }
+        .constraints {
+            font-size: 14px;
+            margin: 8px 0;
+            font-family: monospace;
+            background-color: #eeeeee;
+            padding: 6px;
+        }
+        .objective {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 8px 0;
+            font-family: monospace;
+            background-color: #ddffdd;
+            padding: 6px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            border-top: 1px solid #cccccc;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1 align="center">Модели формирования оптимального портфеля ценных бумаг</h1>
+<div class = "task">
+<p style="margin: 0cm 0cm 0pt; text-align: justify;"><span style="font-size: 14pt;"><strong>Пример 1.</strong> Менеджер по ценным бумагам решил разместить 500 тыс. руб., чтобы получить максимальный совокупный доход по годовым процентам в разные активы (объекты).</span></p>
+<p></p>
+<p style="margin: 0cm 0cm 0pt; text-align: justify; text-indent: 36pt;"><span style="font-size: 14pt;">Его выбор ограничен четырьмя возможными объектами инвестиций (активами) (А, Б, С, Д) или активами.</span></p>
+<p></p>
+<p style="margin: 0cm 0cm 0pt; text-align: justify; text-indent: 36pt;"><span style="font-size: 14pt;">Объект А позволяет получить 6% годовых, Б – 8%, С – 10%, Д – 9%.</span></p>
+<p></p>
+<p style="margin: 0cm 0cm 0pt; text-align: justify; text-indent: 36pt;"><span style="font-size: 14pt;">Для всех четырех объектов (активов) степень риска и другие условия размещения различны, а именно:</span></p>
+<ul>
+    <li>
+<p></p>
+<p style="margin: 0cm 0cm 0pt 30pt; text-align: justify; text-indent: -18pt;"><span style="font-size: 14pt;">чтобы не подвергать риску имеющийся капитал менеджер принял решение, что не менее половины инвестиций необходимо вложить в объекты А и Б;</span></p>
+<p></p>
+    </li>
+    <li>
+<p style="margin: 0cm 0cm 0pt 30pt; text-align: justify; text-indent: -18pt;"><span style="font-size: 14pt;">чтобы обеспечить ликвидность не менее 25% от суммы капитала следует поместить в объект Д;</span></p>
+<p></p>
+    <li>
+<p style="margin: 0cm 0cm 0pt 30pt; text-align: justify; text-indent: -18pt;"><span style="font-size: 14pt;">учитывая возможность изменения в политике правительства, предусматривается, что в объект С следует вкладывать не более 20% инвестиций; </span></p>
+    </li>
+    <li>
+<p></p>
+<p style="margin: 0cm 0cm 0pt 30pt; text-align: justify; text-indent: -18pt;"><span style="font-size: 14pt;">особенности налоговой политики требуют, чтобы в объект А было вложено не менее 30% общей суммы капитала.</span></p>
+    </li>
+</ul>
+<p></p>
+<p style="margin: 0cm 0cm 0pt; text-align: justify; text-indent: 36pt;"><span style="font-size: 14pt;">Определить суммы вложений в соответствующие объекты инвестиций с целью получения максимального годового дохода.</span></p></p>
+<p></p>
+<p style="margin: 0cm 0cm 0pt; line-height: 150%;"><span style="line-height: 150%; font-size: 14pt;"> </span></p>
+</div>
+<div class = "task">
+<p style="margin: 0cm 0cm 0pt; text-align: justify;"><span style="font-size: 14pt;"><strong>Пример 2.</strong>  Составить экономико-математическую модель задачи формирования портфеля ценных бумаг, обеспечивающий минимум риска при доходности не менее 10%. Портфель должен включать активы А, В, С, для которых известны следующие данные (таблица 6.3):</span>
+</div>
+<p style="margin: 0cm 0cm 0pt; line-height: 150%;"></p>
+<p></p>
+<p style="margin: 0cm 0cm 0pt; line-height: 150%;"></p>
+<p style="margin: 0cm 0cm 0pt; text-align: right; text-indent: 36pt;" align="right"><span style="font-size: 14pt;">Таблица 6.3</span></p>
+<p style="margin: 0cm 0cm 0pt; line-height: 150%;"></p>
+<p></p>
+<p style="margin: 0cm 0cm 0pt; line-height: 150%;"></p>
+<table style="margin: auto auto auto 72pt; border: currentColor; border-collapse: collapse;" cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr>
+<td style="padding: 0cm 5.4pt; border: 1pt solid windowtext; width: 106.3pt; background-color: transparent;" width="142" valign="top">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 12pt;">Вид актива</span></p>
+</td>
+<td style="border-width: 1pt 1pt 1pt 0px; border-style: solid solid solid none; border-color: windowtext windowtext windowtext #000000; padding: 0cm 5.4pt; width: 163pt; background-color: transparent;" width="217" valign="top">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 12pt;">Доходность актива</span></p>
+</td>
+<td style="border-width: 1pt 1pt 1pt 0px; border-style: solid solid solid none; border-color: windowtext windowtext windowtext #000000; padding: 0cm 5.4pt; width: 99.25pt; background-color: transparent;" width="132" valign="top">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 12pt;">Риск</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-width: 0px 1pt 1pt; border-style: none solid solid; border-color: #000000 windowtext windowtext; padding: 0cm 5.4pt; width: 106.3pt; background-color: transparent;" width="142">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;" lang="EN-US">A</span></p>
+</td>
+<td style="border-width: 0px 1pt 1pt 0px; border-style: none solid solid none; border-color: #000000 windowtext windowtext #000000; padding: 0cm 5.4pt; width: 163pt; background-color: transparent;" width="217">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;">12%</span></p>
+</td>
+<td style="border-width: 0px 1pt 1pt 0px; border-style: none solid solid none; border-color: #000000 windowtext windowtext #000000; padding: 0cm 5.4pt; width: 99.25pt; background-color: transparent;" width="132">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;">20</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-width: 0px 1pt 1pt; border-style: none solid solid; border-color: #000000 windowtext windowtext; padding: 0cm 5.4pt; width: 106.3pt; background-color: transparent;" width="142">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;">В</span></p>
+</td>
+<td style="border-width: 0px 1pt 1pt 0px; border-style: none solid solid none; border-color: #000000 windowtext windowtext #000000; padding: 0cm 5.4pt; width: 163pt; background-color: transparent;" width="217">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;">5%</span></p>
+</td>
+<td style="border-width: 0px 1pt 1pt 0px; border-style: none solid solid none; border-color: #000000 windowtext windowtext #000000; padding: 0cm 5.4pt; width: 99.25pt; background-color: transparent;" width="132">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;">17</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-width: 0px 1pt 1pt; border-style: none solid solid; border-color: #000000 windowtext windowtext; padding: 0cm 5.4pt; width: 106.3pt; background-color: transparent;" width="142">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;">C</span></p>
+</td>
+<td style="border-width: 0px 1pt 1pt 0px; border-style: none solid solid none; border-color: #000000 windowtext windowtext #000000; padding: 0cm 5.4pt; width: 163pt; background-color: transparent;" width="217">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;">7%</span></p>
+</td>
+<td style="border-width: 0px 1pt 1pt 0px; border-style: none solid solid none; border-color: #000000 windowtext windowtext #000000; padding: 0cm 5.4pt; width: 99.25pt; background-color: transparent;" width="132">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;">14</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="margin: 0cm 0cm 0pt; line-height: 150%;"></p>
+<p></p>
+<p style="margin: 0cm 0cm 0pt; line-height: 150%;"></p>
+<p style="margin: 0cm 0cm 0pt; text-align: justify;"><span style="font-size: 14pt;"> </span></p>
+<p style="margin: 0cm 0cm 0pt; line-height: 150%;"></p>
+<p></p>
+<p style="margin: 0cm 0cm 0pt; line-height: 150%;"></p>
+<p style="margin: 0cm 0cm 0pt 35.45pt; text-align: justify;"><span style="font-size: 14pt;">Коэффициент корреляции доходностей активов составляет:</span></p>
+<p style="margin: 0cm 0cm 0pt; line-height: 150%;"></p>
+<p></p>
+<p style="margin: 0cm 0cm 0pt; line-height: 150%;"></p>
+<p style="margin: 0cm 0cm 0pt; text-align: justify; text-indent: 36pt;"><span style="font-size: 18pt;" lang="EN-US">r</span><sub><span style="font-size: 8pt;">А,В</span></sub> = <span style="font-size: 14pt;">0,18; </span><span style="font-size: 18pt;" lang="EN-US">r</span><sub><span style="font-size: 8pt;">А,С</span></sub> = <span style="font-size: 14pt;">0,20; </span><span style="font-size: 18pt;" lang="EN-US">r</span><sub><span style="font-size: 8pt;">В,С</span></sub> =<span style="font-size: 14pt;"> 0,15</span></p>
+<p style="margin: 0cm 0cm 0pt; line-height: 150%;"></p>
+<p></p>
+<div class = "task">
+<p style="margin: 0cm 0cm 0pt; text-align: justify;"><span style="font-size: 14pt;"><strong>Пример 3.</strong>  Новый клиент паевого инвестиционного фонда поручает управление своим инвестиционным портфелем в размере 100000 долл. Клиент собирается ограничиться приобретением акций трех компаний, характеристики которых представлены в таблице 6.1. Постройте модель линейного программирования, которая позволит определить, сколько акций каждой компании должен приобрести менеджер паевого инвестиционного фонда, чтобы оптимизировать ожидаемый годовой доход.</span></p></div>
+<p></p>
+<p style="margin: 0cm 0cm 0pt; text-align: right; line-height: 150%; text-indent: 36pt;" align="right"><span style="line-height: 150%; font-size: 14pt;">Таблица 6.1</span></p>
+<p></p>
+<table style="margin: auto auto auto 6.75pt; border: currentColor; width: 648px; border-collapse: collapse;" cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr style="height: 37pt;">
+<td style="padding: 0cm 5.4pt; border: 1pt solid windowtext; width: 119.15pt; height: 37pt; background-color: transparent;" width="159" valign="top">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 12pt;">Акции компании</span></p>
+<p style="margin: 0cm 0cm 0pt -1.35pt; text-align: center; text-indent: 36pt;" align="center"><span style="font-size: 14pt;"> </span></p>
+</td>
+<td style="border-width: 1pt 1pt 1pt 0px; border-style: solid solid solid none; border-color: windowtext windowtext windowtext #000000; padding: 0cm 5.4pt; width: 82.45pt; height: 37pt; background-color: transparent;" width="110" valign="top">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 12pt;">Цена акции, долл</span></p>
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 12pt;"> </span></p>
+</td>
+<td style="border-width: 1pt 1pt 1pt 0px; border-style: solid solid solid none; border-color: windowtext windowtext windowtext #000000; padding: 0cm 5.4pt; width: 142.1pt; height: 37pt; background-color: transparent;" width="189" valign="top">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 12pt;">Ожидаемый годовой доход на акцию, долл</span></p>
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 12pt;"> </span></p>
+</td>
+<td style="border-width: 1pt 1pt 1pt 0px; border-style: solid solid solid none; border-color: windowtext windowtext windowtext #000000; padding: 0cm 5.4pt; width: 142.3pt; height: 37pt; background-color: transparent;" width="190" valign="top">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 12pt;">Максимально возможные инвестиции, долл</span></p>
+</td>
+</tr>
+<tr style="height: 16pt;">
+<td style="border-width: 0px 1pt 1pt; border-style: none solid solid; border-color: #000000 windowtext windowtext; padding: 0cm 5.4pt; width: 119.15pt; height: 16pt; background-color: transparent;" width="159" valign="top">
+<p style="margin: 0cm 0cm 0pt; text-align: justify;"><span style="font-size: 10pt;" lang="EN-US">Gofer Crude</span></p>
+<p style="margin: 0cm 0cm 0pt; text-align: justify;"><span style="font-size: 10pt;" lang="EN-US">Can Oil</span></p>
+<p style="margin: 0cm 0cm 0pt; text-align: justify;"><span style="font-size: 10pt;" lang="EN-US">Sloth Petroleum</span></p>
+</td>
+<td style="border-width: 0px 1pt 1pt 0px; border-style: none solid solid none; border-color: #000000 windowtext windowtext #000000; padding: 0cm 5.4pt; width: 82.45pt; height: 16pt; background-color: transparent;" width="110" valign="top">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;" lang="EN-US">60</span></p>
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;" lang="EN-US">25</span></p>
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;" lang="EN-US">20</span></p>
+</td>
+<td style="border-width: 0px 1pt 1pt 0px; border-style: none solid solid none; border-color: #000000 windowtext windowtext #000000; padding: 0cm 5.4pt; width: 142.1pt; height: 16pt; background-color: transparent;" width="189" valign="top">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;" lang="EN-US">7</span></p>
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;" lang="EN-US">3</span></p>
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;" lang="EN-US">3</span></p>
+</td>
+<td style="border-width: 0px 1pt 1pt 0px; border-style: none solid solid none; border-color: #000000 windowtext windowtext #000000; padding: 0cm 5.4pt; width: 142.3pt; height: 16pt; background-color: transparent;" width="190" valign="top">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;" lang="EN-US">60000</span></p>
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;" lang="EN-US">25000</span></p>
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;" lang="EN-US">30000</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p style="margin: 0cm 0cm 0pt 19.85pt; line-height: 150%;"><span style="line-height: 150%; font-size: 14pt;" lang="EN-US"> </span></p>
+<p></p>
+</div>
+<div class="task">
+<p style="margin: 0cm 0cm 0pt; text-align: justify;"><span style="font-size: 14pt;"><strong>Пример 4.</strong>  Инвестиционная компания должна определить, куда следует вложить средства в размере 10 млн. долл. Цель – максимизировать ожидаемый доход в следующем году. Четыре возможных варианта вложения средств представлены в таблице 6.2. </span></p></div>
+<p></p>
+<p style="margin: 0cm 0cm 0pt; text-align: right; line-height: 150%; text-indent: 36pt;" align="right"><span style="line-height: 150%; font-size: 14pt;">Таблица 6.2</span></p>
+<p></p>
+<table style="margin: auto auto auto 6.75pt; border: currentColor; border-collapse: collapse;" cellspacing="0" cellpadding="0" border="1">
+<tbody>
+<tr style="height: 44.2pt;">
+<td style="padding: 0cm 5.4pt; border: 1pt solid windowtext; width: 135pt; height: 44.2pt; background-color: transparent;" width="180" valign="top">
+<p style="margin: 0cm 0cm 0pt -1.35pt; text-align: center;" align="center"><span style="font-size: 12pt;">Варианты инвестирования</span></p>
+</td>
+<td style="border-width: 1pt 1pt 1pt 0px; border-style: solid solid solid none; border-color: windowtext windowtext windowtext #000000; padding: 0cm 5.4pt; width: 171pt; height: 44.2pt; background-color: transparent;" width="228" valign="top">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 12pt;">Ожидаемый доход, %</span></p>
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 12pt;"> </span></p>
+</td>
+<td style="border-width: 1pt 1pt 1pt 0px; border-style: solid solid solid none; border-color: windowtext windowtext windowtext #000000; padding: 0cm 5.4pt; width: 174.6pt; height: 44.2pt; background-color: transparent;" width="233" valign="top">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 12pt;">Максимально возможная сумма инвестиций, млн. долл</span></p>
+</td>
+</tr>
+<tr>
+<td style="border-width: 0px 1pt 1pt; border-style: none solid solid; border-color: #000000 windowtext windowtext; padding: 0cm 5.4pt; width: 155pt; height: 64pt; background-color: transparent;" width="180" valign="top">
+<p style="margin: 0cm 0cm 0pt -1.35pt; text-align: justify;"><span style="font-size: 10pt;">обыкновенные акции</span></p>
+<p style="margin: 0cm 0cm 0pt -1.35pt; text-align: justify;"><span style="font-size: 10pt;">облигации казначейства</span></p>
+<p style="margin: 0cm 0cm 0pt -1.35pt; text-align: justify;"><span style="font-size: 10pt;">фонд валютного рынка</span></p>
+<p style="margin: 0cm 0cm 0pt -1.35pt; text-align: justify;"><span style="font-size: 10pt;">муниципальные облигации</span></p>
+</td>
+<td style="border-width: 0px 1pt 1pt 0px; border-style: none solid solid none; border-color: #000000 windowtext windowtext #000000; padding: 0cm 5.4pt; width: 171pt; height: 64pt; background-color: transparent;" width="228" valign="top">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;">8</span></p>
+
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;">6</span></p>
+
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;">12</span></p>
+
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;">9</span></p>
+</td>
+<td style="border-width: 0px 1pt 1pt 0px; border-style: none solid solid none; border-color: #000000 windowtext windowtext #000000; padding: 0cm 5.4pt; width: 174.6pt; height: 64pt; background-color: transparent;" width="233" valign="top">
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;">5</span></p>
+
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;">7</span></p>
+
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;">2</span></p>
+<p style="margin: 0cm 0cm 0pt; text-align: center;" align="center"><span style="font-size: 10pt;">4</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p></p>
+<p style="margin: 0cm 0cm 0pt; text-align: justify; text-indent: 36pt;"><span style="font-size: 14pt;"> </span></p>
+<p></p>
+<div class="task">
+<p style="margin: 0cm 0cm 0pt; text-align: justify; text-indent: 36pt;"><span style="font-size: 14pt;">Компания также приняла решение, что не менее 30% средств должно быть вложено в обыкновенные акции и долгосрочные казначейские облигации и не более 40% - в фонды валютного рынка и муниципальные облигации. Необходимо инвестировать все имеющиеся 10 млн. долл. Сформулируйте задачу линейного программирования, позволяющую определить, куда и сколько вложить средств, и найдите решение.</span></p></div>
+<p></p>
+<p style="margin: 0cm 0cm 0pt;"><span style="font-size: 14pt;"> </span></p>
+<p></p>
+<p style="margin: 0cm 0cm 0pt; text-align: justify;"><i><span style="line-height: 150%; font-size: 14pt;"></span></i> </p>
+<p></p>
+<p></p>
+<p style="margin: 0cm 0cm 0pt; text-align: justify;"><span style="font-size: 14pt;"></span> </p>
+<p></p>
+<p style="margin: 0cm 0cm 0pt 7.65pt;"> </p>
+<p></p>
+
+
+</body>
+</html>
